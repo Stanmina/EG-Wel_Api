@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "PDS3+oabbp9xQ4oqUk73+3pkj9mFDchEDCSwRWGRujbF2WXSxTfsp4sHBqX/NUzNv3Ue5ZpTllYQZwZ1P54PdQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\TestApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\EG-Wel\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
