@@ -33,12 +33,6 @@ app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService 
     var result = inMemHigh.GetSingleUserData(name);
     return Results.Ok(result);
 });
-
-app.MapGet("/test", ([FromServices] IHighScoreService inMemHigh) =>
-{
-    var result = inMemHigh.GetHighScoreList();
-    return Results.Ok(result);
-});
 #region
 /*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] string alias) =>
 {
