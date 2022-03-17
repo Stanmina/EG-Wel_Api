@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\TestApi.csproj": {}
+    "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\TestApi.csproj": {
+    "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\TestApi.csproj",
+        "projectUniqueName": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj",
         "projectName": "TestApi",
-        "projectPath": "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\TestApi.csproj",
+        "projectPath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj",
         "packagesPath": "C:\\Users\\EG-Wel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EG-Wel\\source\\repos\\Eg-wel_Api\\TestApi\\TestApi\\obj\\",
+        "outputPath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\EG-Wel\\AppData\\Roaming\\NuGet\\NuGet.Config",
