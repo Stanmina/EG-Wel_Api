@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton(new InMemHighScoreService());
+builder.Services.AddSingleton<IHighScoreService, SQLiteHighScoreService>();
 
 var app = builder.Build();
 
@@ -22,67 +22,71 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 #region Get
-app.MapGet("/HighScores/GetAllUserData", ([FromServices] InMemHighScoreService inMemHigh) =>
+app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService inMemHigh) =>
 {
-    var result = inMemHigh.GetUserDatas();
+    var result = inMemHigh.GetHighScoreList();
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] string name) =>
+app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] string name) =>
 {
     var result = inMemHigh.GetSingleUserData(name);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] string alias) =>
+app.MapGet("/test", ([FromServices] IHighScoreService inMemHigh) =>
+{
+    var result = inMemHigh.GetHighScoreList();
+    return Results.Ok(result);
+});
+#region
+/*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] string alias) =>
 {
     var result = inMemHigh.GetSingleUserDataByAlias(alias);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByScore/{highScore}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] int highScore) =>
+app.MapGet("/HighScores/SearchByScore/{highScore}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] int highScore) =>
 {
     var result = inMemHigh.GetHighscoreUserData(highScore);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByLevelCompleted/{levelCompleted}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] int levelCompleted) =>
+app.MapGet("/HighScores/SearchByLevelCompleted/{levelCompleted}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] int levelCompleted) =>
 {
     var result = inMemHigh.GetLevelCompletedUserData(levelCompleted);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/GetHighScoreList/", ([FromServices] InMemHighScoreService inMemHigh/*[FromRoute] string name*/) =>
+app.MapGet("/HighScores/GetHighScoreList/", ([FromServices] IHighScoreService inMemHigh) =>
 {
     var orderedList = inMemHigh.GetHighScoreList();
     return orderedList;
 });
 
-app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] InMemHighScoreService inMemHigh) =>
+app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] IHighScoreService inMemHigh) =>
 {
     var averageHighScore = inMemHigh.GetAverageHighScore();
     return Results.Ok(averageHighScore);
-});
+});*/
+#endregion
 #endregion
 
 #region Put
-app.MapPut("/HighScores", ([FromServices] InMemHighScoreService inMemHigh, [FromBody] UserData data) =>
+app.MapPut("/HighScores", ([FromServices] IHighScoreService inMemHigh, [FromBody] UserData data) =>
 {
-    if (inMemHigh.UpdateSingleUserData(data))
-        return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
-    else
-        return Results.NotFound();
+    inMemHigh.UpdateSingleUserData(data);
 });
 #endregion
 
 #region Post
-app.MapPost("/HighScores", ([FromServices] InMemHighScoreService inMemHigh, [FromBody] UserData data) =>
+app.MapPost("/HighScores", ([FromServices] IHighScoreService inMemHigh, [FromBody] UserData data) =>
 {
     inMemHigh.AddSingleUserData(data);
     return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
 });
 
-app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] InMemHighScoreService inMemHigh, [FromBody] List<UserData> data) =>
+app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService inMemHigh, [FromBody] List<UserData> data) =>
 {
     inMemHigh.AddMultipleUserData(data);
     return Results.Created($"/HighScores", data);
@@ -90,17 +94,9 @@ app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] InMemHighScoreSer
 #endregion
 
 #region Delete
-app.MapDelete("/HighScores/DeleteByName/{name}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] string name) =>
+app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] IHighScoreService inMemHigh, [FromRoute] int id) =>
 {
-    if (inMemHigh.DeleteSingleUserData(name))
-        return Results.NoContent();
-    else
-        return Results.NotFound();
-});
-
-app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] InMemHighScoreService inMemHigh, [FromRoute] int id) =>
-{
-    inMemHigh.DeleteSingleUserData(id);
+    inMemHigh.DeleteSingleUserDataById(id);
 });
 #endregion
 
