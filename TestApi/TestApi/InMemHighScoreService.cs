@@ -1,6 +1,6 @@
 ﻿namespace TestApi
 {
-    public class InMemHighScoreService
+    public class InMemHighScoreService/* : IHighScoreService*/
     {
         private List<UserData> userDatas;
 
@@ -57,17 +57,14 @@
                 return false;
         }
 
-        public bool UpdateSingleUserData(UserData data)
+        public void UpdateSingleUserData(UserData data)
         {
             var exist = userDatas.Find((x) => x.Name == data.Name && x.Alias != data.Alias);
             if (exist != null)
             {
                 userDatas.Remove(exist);
                 userDatas.Add(data);
-                return true;
             }
-            else
-                return false;
         }
 
         public void AddSingleUserData(UserData data) => userDatas.Add(data);
@@ -80,7 +77,7 @@
             }
         }
 
-        public void DeleteSingleUserData(int id) => userDatas.Remove(userDatas.Find((x) => x.Id == id));
+        public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.Id == id));
 
     }
 }
