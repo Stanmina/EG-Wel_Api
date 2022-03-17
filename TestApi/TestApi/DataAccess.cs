@@ -3,7 +3,7 @@
 namespace TestApi;
 public class DataAccess
 {
-    SQLiteConnection conn = new(@"Data Source=C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\testdb.db");
+    SQLiteConnection conn = new(@"Data Source=C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\testdb.db");
     public List<UserData> GetUserData(string command)
     {
         List<UserData> data = new();
