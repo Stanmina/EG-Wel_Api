@@ -58,18 +58,28 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
-    <Folder Include="PublishLocations" />
     <Folder Include="dbo\Views" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\PostDeployScripts" />
+    <Folder Include="dbo\PublishLocations" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\GameData.sql" />
     <Build Include="dbo\Tables\UserData.sql" />
     <Build Include="dbo\Views\FullUserData.sql" />
     <Build Include="dbo\Stored Procedures\spGetSingleUserDataByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSingleGameDataByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllUserData.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteSingleUserData.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteSingleGameData.sql" />
+    <None Include="dbo\PostDeployScripts\Script.PostDeployUserData.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSingleUserData.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSingleGameDataById.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertSingleGameDataByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllByName.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PublishLocations\SQLTestDB.publish.xml" />
+    <None Include="dbo\PublishLocations\SQLTestDB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLTestDB.refactorlog" />

@@ -11,7 +11,7 @@
   "profiles": {
     "TestApi": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\stanv\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi",
+      "workingDirectory": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
