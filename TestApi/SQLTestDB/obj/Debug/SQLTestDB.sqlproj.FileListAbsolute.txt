@@ -1,0 +1,6 @@
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\bin\Debug\SQLTestDB.dacpac
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\bin\Debug\SQLTestDB.dll
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\bin\Debug\SQLTestDB.pdb
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.sqlproj.AssemblyReference.cache
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.dll
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.pdb

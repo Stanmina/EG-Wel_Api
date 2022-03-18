@@ -1,6 +1,6 @@
 ﻿namespace TestApi
 {
-    public class InMemHighScoreService/* : IHighScoreService*/
+    public class InMemHighScoreService : IHighScoreService
     {
         private List<UserData> userDatas;
 
@@ -8,7 +8,7 @@
         {
             this.userDatas = new()
             {
-                new UserData { Id = 1, Name = "Stan", Alias = "Stanmina", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayedInSeconds = 50000 } },
+                new UserData { Id = 1, Name = "Stan", Alias = "Stanmina", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayedInSeconds = 60 } },
                 new UserData { Id = 2, Name = "Rens", Alias = "Wijlander", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayedInSeconds = 254 } },
                 new UserData { Id = 3, Name = "Boyd", Alias = "Eliogat", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayedInSeconds = 375 } },
                 new UserData { Id = 4, Name = "Angela", Alias = "Ansje", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayedInSeconds = 569 } },

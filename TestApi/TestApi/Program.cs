@@ -22,75 +22,75 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 #region Get
-app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService highScoreService) =>
+app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService hsService) =>
 {
-    var result = highScoreService.GetHighScoreList();
+    var result = hsService.GetHighScoreList();
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService highScoreService, [FromRoute] string name) =>
+app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService hsService, [FromRoute] string name) =>
 {
-    var result = highScoreService.GetSingleUserData(name);
+    var result = hsService.GetSingleUserData(name);
     return Results.Ok(result);
 });
 #region
-/*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService highScoreService, [FromRoute] string alias) =>
+/*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService hsService, [FromRoute] string alias) =>
 {
-    var result = highScoreService.GetSingleUserDataByAlias(alias);
+    var result = hsService.GetSingleUserDataByAlias(alias);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByScore/{highScore}", ([FromServices] IHighScoreService highScoreService, [FromRoute] int highScore) =>
+app.MapGet("/HighScores/SearchByScore/{highScore}", ([FromServices] IHighScoreService hsService, [FromRoute] int highScore) =>
 {
-    var result = highScoreService.GetHighscoreUserData(highScore);
+    var result = hsService.GetHighscoreUserData(highScore);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByLevelCompleted/{levelCompleted}", ([FromServices] IHighScoreService highScoreService, [FromRoute] int levelCompleted) =>
+app.MapGet("/HighScores/SearchByLevelCompleted/{levelCompleted}", ([FromServices] hsService highScoreService, [FromRoute] int levelCompleted) =>
 {
-    var result = highScoreService.GetLevelCompletedUserData(levelCompleted);
+    var result = hsService.GetLevelCompletedUserData(levelCompleted);
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/GetHighScoreList/", ([FromServices] IHighScoreService highScoreService) =>
+app.MapGet("/HighScores/GetHighScoreList/", ([FromServices] IHighScoreService hsService) =>
 {
-    var orderedList = highScoreService.GetHighScoreList();
+    var orderedList = hsService.GetHighScoreList();
     return orderedList;
 });
 
-app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] IHighScoreService highScoreService) =>
+app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] IHighScoreService hsService) =>
 {
-    var averageHighScore = highScoreService.GetAverageHighScore();
+    var averageHighScore = hsService.GetAverageHighScore();
     return Results.Ok(averageHighScore);
 });*/
 #endregion
 #endregion
 
 #region Put
-app.MapPut("/HighScores", ([FromServices] IHighScoreService highScoreService, [FromBody] UserData data) =>
+app.MapPut("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody] UserData data) =>
 {
-    highScoreService.UpdateSingleUserData(data);
+    hsService.UpdateSingleUserData(data);
 });
 #endregion
 
 #region Post
-app.MapPost("/HighScores", ([FromServices] IHighScoreService highScoreService, [FromBody] UserData data) =>
+app.MapPost("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody] UserData data) =>
 {
-    highScoreService.AddSingleUserData(data);
+    hsService.AddSingleUserData(data);
     return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
 });
 
-app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService highScoreService, [FromBody] List<UserData> data) =>
+app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService hsService, [FromBody] List<UserData> data) =>
 {
-    highScoreService.AddMultipleUserData(data);
+    hsService.AddMultipleUserData(data);
     return Results.Created($"/HighScores", data);
 });
 #endregion
 
 #region Delete
-app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] IHighScoreService highScoreService, [FromRoute] int id) =>
+app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] IHighScoreService hsService, [FromRoute] int id) =>
 {
-    highScoreService.DeleteSingleUserDataById(id);
+    hsService.DeleteSingleUserDataById(id);
 });
 #endregion
 

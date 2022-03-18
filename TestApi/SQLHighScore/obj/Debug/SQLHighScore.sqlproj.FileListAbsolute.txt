@@ -1,0 +1,10 @@
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\bin\Debug\SQLHighScore.dacpac
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\bin\Debug\SQLHighScore.dll
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\bin\Debug\SQLHighScore.pdb
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\SQLHighScore.sqlproj.AssemblyReference.cache
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\Model.xml
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\refactor.xml
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\postdeploy.sql
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\predeploy.sql
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\SQLHighScore.dll
+C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLHighScore\obj\Debug\SQLHighScore.pdb
