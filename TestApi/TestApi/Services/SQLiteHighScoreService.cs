@@ -36,7 +36,7 @@
 
         public List<UserData> GetHighScoreList()
         {
-            return _database.GetHighScoreList($"SELECT * FROM UserData JOIN GameData ON UserData.Id = GameData.Id");
+            return _database.GetHighScoreList($"SELECT * FROM UserData JOIN GameData ON UserData.UserDataId = GameData.UserDataId");
         }
 
         public List<UserData> GetHighscoreUserData(int highScore)
@@ -51,7 +51,7 @@
 
         public UserData? GetSingleUserData(string name)
         {
-            return _database.GetUserData($"SELECT * FROM UserData JOIN GameData ON UserData.Id = GameData.Id WHERE UserData.Name = \"{name}\"").FirstOrDefault();
+            return _database.GetUserData($"SELECT * FROM UserData JOIN GameData ON UserData.UserDataId = GameData.UserDataId WHERE UserData.Name = \"{name}\"").FirstOrDefault();
         }
 
         public UserData? GetSingleUserDataByAlias(string alias)

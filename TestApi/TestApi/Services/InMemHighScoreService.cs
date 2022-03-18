@@ -8,16 +8,16 @@
         {
             this.userDatas = new()
             {
-                new UserData { Id = 1, Name = "Stan", Alias = "Stanmina", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayedInSeconds = 50000 } },
-                new UserData { Id = 2, Name = "Rens", Alias = "Wijlander", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayedInSeconds = 254 } },
-                new UserData { Id = 3, Name = "Boyd", Alias = "Eliogat", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayedInSeconds = 375 } },
-                new UserData { Id = 4, Name = "Angela", Alias = "Ansje", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayedInSeconds = 569 } },
-                new UserData { Id = 5, Name = "Wendy", Alias = "MegaWendy", GameData = new() { HighScore = 420, LevelsCompleted = 2, TimePlayedInSeconds = 824 } },
-                new UserData { Id = 6, Name = "Emily", Alias = "Emi", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayedInSeconds = 951 } },
-                new UserData { Id = 7, Name = "Abigail", Alias = "Abi", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayedInSeconds = 165 } },
-                new UserData { Id = 8, Name = "Lars", Alias = "Larsie", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayedInSeconds = 497 } },
-                new UserData { Id = 9, Name = "Emiel", Alias = "EmielDebiel", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayedInSeconds = 795 } },
-                new UserData { Id = 10, Name = "Luuk", Alias = "Franky", GameData = new() { HighScore = 420, LevelsCompleted = 2, TimePlayedInSeconds = 166 } }
+                new UserData { UserDataId = 1, Name = "Stan", Alias = "Stanmina", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayed = 50000 } },
+                new UserData { UserDataId = 2, Name = "Rens", Alias = "Wijlander", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayed = 254 } },
+                new UserData { UserDataId = 3, Name = "Boyd", Alias = "Eliogat", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayed = 375 } },
+                new UserData { UserDataId = 4, Name = "Angela", Alias = "Ansje", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayed = 569 } },
+                new UserData { UserDataId = 5, Name = "Wendy", Alias = "MegaWendy", GameData = new() { HighScore = 420, LevelsCompleted = 2, TimePlayed = 824 } },
+                new UserData { UserDataId = 6, Name = "Emily", Alias = "Emi", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayed = 951 } },
+                new UserData { UserDataId = 7, Name = "Abigail", Alias = "Abi", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayed = 165 } },
+                new UserData { UserDataId = 8, Name = "Lars", Alias = "Larsie", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayed = 497 } },
+                new UserData { UserDataId = 9, Name = "Emiel", Alias = "EmielDebiel", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayed = 795 } },
+                new UserData { UserDataId = 10, Name = "Luuk", Alias = "Franky", GameData = new() { HighScore = 420, LevelsCompleted = 2, TimePlayed = 166 } }
             };
         }
 
@@ -34,7 +34,7 @@
         public List<UserData> GetHighScoreList()
         {
             List<UserData> orderList = userDatas;
-            orderList = orderList.OrderByDescending(x => x.GameData?.HighScore).ThenBy(x => x.GameData?.TimePlayedInSeconds).ToList();
+            orderList = orderList.OrderByDescending(x => x.GameData?.HighScore).ThenBy(x => x.GameData?.TimePlayed).ToList();
             return orderList;
         }
 
@@ -77,7 +77,7 @@
             }
         }
 
-        public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.Id == id));
+        public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.UserDataId == id));
 
     }
 }
