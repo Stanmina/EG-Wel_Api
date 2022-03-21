@@ -131,3 +131,4 @@ C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\obj\Debug\net6.0\refi
 C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\obj\Debug\net6.0\TestApi.pdb
 C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\obj\Debug\net6.0\TestApi.genruntimeconfig.cache
 C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\obj\Debug\net6.0\ref\TestApi.dll
+C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\TestApi\bin\Debug\net6.0\Dapper.dll

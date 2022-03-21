@@ -1,10 +1,10 @@
-﻿namespace TestApi;
+﻿/*namespace TestApi;
 
 public class SQLiteHighScoreService : IHighScoreService
 {
-    private readonly DataAccess _database;
+    private readonly SqliteDataAccess _database;
 
-    public SQLiteHighScoreService() => _database = new DataAccess();
+    public SQLiteHighScoreService() => _database = new SqliteDataAccess();
 
     public void AddMultipleUserData(List<UserData> data) => _database.PostMultipleUserData(data);
 
@@ -48,3 +48,4 @@ public class SQLiteHighScoreService : IHighScoreService
 
     public void UpdateSingleUserData(UserData data) => _database.PutGameData(data);
 }
+*/
