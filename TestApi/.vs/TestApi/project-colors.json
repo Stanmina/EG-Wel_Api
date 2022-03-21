@@ -5,7 +5,22 @@
       "ProjectGuid": "8aaf3a90-ff9f-4e07-8757-e42b57930b45",
       "DisplayName": "TestApi",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "aa1ed0c0-b415-4ea1-845b-a45794ca3d3b": {
+      "ProjectGuid": "aa1ed0c0-b415-4ea1-845b-a45794ca3d3b",
+      "DisplayName": "SQLTestDB",
+      "ColorIndex": 1
+    },
+    "001546ac-2675-4bbc-a17e-4101e393db66": {
+      "ProjectGuid": "001546ac-2675-4bbc-a17e-4101e393db66",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }
