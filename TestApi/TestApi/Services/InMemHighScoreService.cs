@@ -77,7 +77,11 @@
             }
         }
 
+<<<<<<< Updated upstream:TestApi/TestApi/Services/InMemHighScoreService.cs
         public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.UserDataId == id));
+=======
+        public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.Id == id));
+>>>>>>> Stashed changes:TestApi/TestApi/InMemHighScoreService.cs
 
     }
 }
