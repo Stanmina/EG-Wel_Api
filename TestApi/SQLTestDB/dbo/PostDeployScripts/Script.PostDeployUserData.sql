@@ -9,10 +9,17 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-IF NOT EXISTS ( SELECT * FROM dbo.UserData WHERE Name = 'Demo' AND Alias = 'User' )
+IF NOT EXISTS ( SELECT 1 FROM dbo.UserData )
 BEGIN
-    INSERT INTO dbo.UserData ( Name, Alias )
-    VALUES ( 'Demo', 'User' );
-    INSERT INTO dbo.GameData ( UserDataId, HighScore, LevelsCompleted, TimePlayed )
-    VALUES ( (SELECT UserDataId FROM UserData WHERE Name = 'Demo' AND Alias = 'User') , 420, 2, 69 );
+    EXEC spInsertSingleUserData 'Demo', 'User';
+    EXEC spInsertSingleUserData 'Stan', 'Stanmina';
+    EXEC spInsertSingleUserData 'Boyd', 'IDk';
+    EXEC spInsertSingleUserData 'Rens', 'Nijlander';
+    EXEC spInsertSingleUserData 'Angela', 'Gans';
+
+    EXEC spInsertSingleGameDataByName 'Demo', 10, 2, 28;
+    EXEC spInsertSingleGameDataByName 'Stan', 42069, 4, 60;
+    EXEC spInsertSingleGameDataByName 'Boyd', 666, 3, 86;
+    EXEC spInsertSingleGameDataByName 'Rens', 420, 3, 74;
+    EXEC spInsertSingleGameDataByName 'Angela', 69, 2, 126;
 END

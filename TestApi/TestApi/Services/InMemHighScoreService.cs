@@ -16,9 +16,7 @@ public class InMemHighScoreService : IHighScoreService
             new UserData { Id = 6, Name = "Emily", Alias = "Emi", GameData = new() { HighScore = 69, LevelsCompleted = 2, TimePlayedInSeconds = 951 } },
             new UserData { Id = 7, Name = "Abigail", Alias = "Abi", GameData = new() { HighScore = 420, LevelsCompleted = 1, TimePlayedInSeconds = 165 } },
             new UserData { Id = 8, Name = "Lars", Alias = "Larsie", GameData = new() { HighScore = 666, LevelsCompleted = 3, TimePlayedInSeconds = 497 } },
-            new UserData { Id = 9, Name = "Emiel", Alias = "EmielDebiel", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayedInSeconds = 795 } },
-            new UserData { Id = 10, Name = "Luuk", Alias = "Franky", GameData = new() { HighScore = 420, LevelsCompleted = 2, TimePlayedInSeconds = 166 } }
-        };
+            new UserData { Id = 9, Name = "Emiel", Alias = "EmielDebiel", GameData = new() { HighScore = 69, LevelsCompleted = 1, TimePlayedInSeconds = 795 } }        };
     }
 
     public List<UserData> GetUserDatas() => userDatas;

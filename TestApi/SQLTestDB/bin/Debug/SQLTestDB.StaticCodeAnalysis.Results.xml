@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Problems>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spGetAllByName.sql</SourceFile>
+    <Line>8</Line>
+    <Column>8</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spInsertSingleGameDataByName.sql</SourceFile>
+    <Line>11</Line>
+    <Column>65</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spInsertSingleUserData.sql</SourceFile>
+    <Line>5</Line>
+    <Column>46</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spInsertSingleUserData.sql</SourceFile>
+    <Line>5</Line>
+    <Column>63</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spInsertSingleUserData.sql</SourceFile>
+    <Line>11</Line>
+    <Column>50</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spInsertSingleUserData.sql</SourceFile>
+    <Line>11</Line>
+    <Column>67</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spGetSingleGameDataByName.sql</SourceFile>
+    <Line>8</Line>
+    <Column>8</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0007</Rule>
+    <ProblemDescription>Nullable columns can cause final results to be evaluated as NULL for the predicate.</ProblemDescription>
+    <SourceFile>C:\Users\stanv\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\dbo\Stored Procedures\spGetSingleUserDataByName.sql</SourceFile>
+    <Line>8</Line>
+    <Column>8</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+</Problems>

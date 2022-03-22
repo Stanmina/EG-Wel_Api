@@ -1,0 +1,36 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[UserData]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[UserData].[Naam] is being dropped, data loss could occur.
+
+** User actions
+     Rename
+       [dbo].[GameData].[GameDataId] (Column)
+       [dbo].[UserData].[UserDataId] (Column)
+     Table rebuild
+       [dbo].[UserData] (Table)
+     Create
+       [dbo].[FullUserData] (View)
+       [dbo].[GetAllByName] (Procedure)
+       [dbo].[spDeleteSingleGameData] (Procedure)
+       [dbo].[spDeleteSingleUserData] (Procedure)
+       [dbo].[spGetAllUserData] (Procedure)
+       [dbo].[spGetSingleGameDataByName] (Procedure)
+       [dbo].[spGetSingleUserDataByName] (Procedure)
+       [dbo].[spInsertSingleGameDataById] (Procedure)
+       [dbo].[spInsertSingleGameDataByName] (Procedure)
+       [dbo].[spInsertSingleUserData] (Procedure)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_GameData_UserData] (Foreign Key)
+     Create
+       [dbo].[FK_GameData_UserData] (Foreign Key)
+
+The column [dbo].[UserData].[Naam] is being dropped, data loss could occur.
+
