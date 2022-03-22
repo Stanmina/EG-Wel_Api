@@ -1,0 +1,33 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column TimePlayed in table [dbo].[GameData] is currently  FLOAT (53) NULL but is being changed to  INT
+         NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT
+         NULL.
+
+** User actions
+     Alter
+       [dbo].[GameData] (Table)
+
+** Supporting actions
+     Refresh
+       [dbo].[FullUserData] (View)
+       [dbo].[GetAllByName] (Procedure)
+       [dbo].[spDeleteSingleGameData] (Procedure)
+       [dbo].[spDeleteSingleUserData] (Procedure)
+       [dbo].[spGetAllUserData] (Procedure)
+       [dbo].[spGetSingleGameDataByName] (Procedure)
+       [dbo].[spGetSingleUser] (Procedure)
+       [dbo].[spGetSingleUserDataByName] (Procedure)
+       [dbo].[spInsertSingleGameDataById] (Procedure)
+       [dbo].[spInsertSingleGameDataByName] (Procedure)
+       [dbo].[spInsertSingleUserData] (Procedure)
+
+The type for column TimePlayed in table [dbo].[GameData] is currently  FLOAT (53) NULL but is being changed to  INT NULL. Data loss could occur and deployment may fail if the column contains data that is incompatible with type  INT NULL.
+If this deployment is executed, changes to [dbo].[GameData] might introduce run-time errors in [dbo].[spInsertSingleGameData].
+

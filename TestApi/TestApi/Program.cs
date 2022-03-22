@@ -1,5 +1,6 @@
 using TestApi;
 using Microsoft.AspNetCore.Mvc;
+using TestApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IHighScoreService, SQLiteHighScoreService>();
+builder.Services.AddSingleton<IHighScoreService, SQLHighScoreService>();
 
 var app = builder.Build();
 
@@ -24,7 +25,7 @@ app.UseHttpsRedirection();
 #region Get
 app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService hsService) =>
 {
-    var result = hsService.GetHighScoreList();
+    var result = hsService.GetUserDatas();
     return Results.Ok(result);
 });
 
@@ -88,9 +89,11 @@ app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService
 #endregion
 
 #region Delete
-app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] IHighScoreService hsService, [FromRoute] int id) =>
-{
+app.MapDelete("HighScore/DeleteById/{id}", ([FromServices] IHighScoreService hsService, [FromRoute] int id) => {
     hsService.DeleteSingleUserDataById(id);
+});
+app.MapDelete("HighScore/DeleteByName/{name}", ([FromServices] IHighScoreService hsService, [FromRoute] string name) => {
+    hsService.DeleteSingleUserDataByName(name);
 });
 #endregion
 

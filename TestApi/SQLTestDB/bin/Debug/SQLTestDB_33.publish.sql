@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "TestDB"
 :setvar DefaultFilePrefix "TestDB"
-:setvar DefaultDataPath "C:\Users\stanv\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\mssqllocaldb\"
-:setvar DefaultLogPath "C:\Users\stanv\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\mssqllocaldb\"
+:setvar DefaultDataPath "C:\Users\EG-Wel\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB\"
+:setvar DefaultLogPath "C:\Users\EG-Wel\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB\"
 
 GO
 :on error exit
@@ -40,208 +40,11 @@ USE [$(DatabaseName)];
 
 
 GO
-/*
-The column [dbo].[UserData].[Naam] is being dropped, data loss could occur.
-*/
-
-IF EXISTS (select top 1 1 from [dbo].[UserData])
-    RAISERROR (N'Rows were detected. The schema update is terminating because data loss might occur.', 16, 127) WITH NOWAIT
-
-GO
-PRINT N'The following operation was generated from a refactoring log file c8ea3b11-b4bd-4ca4-af6b-4b9544d53d3f';
-
-PRINT N'Rename [dbo].[GameData].[Id] to GameDataId';
+PRINT N'Altering Procedure [dbo].[spInsertSingleGameDataByName]...';
 
 
 GO
-EXECUTE sp_rename @objname = N'[dbo].[GameData].[Id]', @newname = N'GameDataId', @objtype = N'COLUMN';
-
-
-GO
-PRINT N'The following operation was generated from a refactoring log file ece8b107-f9ed-4b51-b62e-78f1c8bb773f';
-
-PRINT N'Rename [dbo].[UserData].[Id] to UserDataId';
-
-
-GO
-EXECUTE sp_rename @objname = N'[dbo].[UserData].[Id]', @newname = N'UserDataId', @objtype = N'COLUMN';
-
-
-GO
-PRINT N'Dropping Foreign Key [dbo].[FK_GameData_UserData]...';
-
-
-GO
-ALTER TABLE [dbo].[GameData] DROP CONSTRAINT [FK_GameData_UserData];
-
-
-GO
-PRINT N'Starting rebuilding table [dbo].[UserData]...';
-
-
-GO
-BEGIN TRANSACTION;
-
-SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-
-SET XACT_ABORT ON;
-
-CREATE TABLE [dbo].[tmp_ms_xx_UserData] (
-    [UserDataId] INT          IDENTITY (1, 1) NOT NULL,
-    [Name]       VARCHAR (50) NULL,
-    [Alias]      VARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([UserDataId] ASC)
-);
-
-IF EXISTS (SELECT TOP 1 1 
-           FROM   [dbo].[UserData])
-    BEGIN
-        SET IDENTITY_INSERT [dbo].[tmp_ms_xx_UserData] ON;
-        INSERT INTO [dbo].[tmp_ms_xx_UserData] ([UserDataId], [Alias])
-        SELECT   [UserDataId],
-                 [Alias]
-        FROM     [dbo].[UserData]
-        ORDER BY [UserDataId] ASC;
-        SET IDENTITY_INSERT [dbo].[tmp_ms_xx_UserData] OFF;
-    END
-
-DROP TABLE [dbo].[UserData];
-
-EXECUTE sp_rename N'[dbo].[tmp_ms_xx_UserData]', N'UserData';
-
-COMMIT TRANSACTION;
-
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
-
-
-GO
-PRINT N'Creating Foreign Key [dbo].[FK_GameData_UserData]...';
-
-
-GO
-ALTER TABLE [dbo].[GameData] WITH NOCHECK
-    ADD CONSTRAINT [FK_GameData_UserData] FOREIGN KEY ([UserDataId]) REFERENCES [dbo].[UserData] ([UserDataId]);
-
-
-GO
-PRINT N'Creating View [dbo].[FullUserData]...';
-
-
-GO
-CREATE VIEW [dbo].[FullUserData]
-	AS SELECT [U].[UserDataId], [U].[Name], [U].[Alias], [G].[GameDataId], [G].[HighScore], [G].[LevelsCompleted], [G].[TimePlayed]
-	FROM [dbo].[UserData] [U]
-	JOIN [dbo].[GameData] [G] ON [U].[UserDataId] = [G].[UserDataId];
-GO
-PRINT N'Creating Procedure [dbo].[GetAllByName]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[GetAllByName]
-	@Name VARCHAR(50)
-AS
-BEGIN
-	SELECT [U].[UserDataId], [U].[Name], [U].[Alias], [G].[HighScore], [G].[LevelsCompleted], [G].[TimePlayed]
-	FROM UserData [U]
-	JOIN GameData [G] ON U.UserDataId = G.UserDataId
-	WHERE Name = @Name;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spDeleteSingleGameData]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spDeleteSingleGameData]
-	@Id int
-AS
-BEGIN
-	UPDATE GameData
-	SET HighScore = NULL, LevelsCompleted = NULL, TimePlayed = NULL
-	WHERE UserDataId = @Id;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spDeleteSingleUserData]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spDeleteSingleUserData]
-	@Id int
-AS
-BEGIN
-	-- Delete GameData
-	DELETE
-	FROM GameData
-	WHERE UserDataId = @Id;
-	-- Delete UserData
-	DELETE
-	FROM UserData 
-	WHERE UserDataId = @Id;
-
-END
-GO
-PRINT N'Creating Procedure [dbo].[spGetAllUserData]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spGetAllUserData]
-	
-AS
-BEGIN
-	SELECT [U].[UserDataId], [U].[Name], [U].[Alias], [G].[HighScore], [G].[LevelsCompleted], [G].[TimePlayed]
-	FROM UserData U
-	JOIN GameData G ON U.UserDataId = G.UserDataId;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spGetSingleGameDataByName]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spGetSingleGameDataByName]
-	@Name nvarchar(50)
-AS
-BEGIN
-	SELECT [GameDataId], [HighScore], [LevelsCompleted], [TimePlayed] 
-	FROM [dbo].[GameData][G]
-	JOIN [dbo].[UserData][U] ON [G].[UserDataId] = [U].[UserDataId]
-	WHERE [U].[Name] = @Name;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spGetSingleUserDataByName]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spGetSingleUserDataByName]
-	@Name nvarchar(50)
-AS
-BEGIN
-	SELECT [U].[UserDataId], [U].[Name], [U].[Alias]
-	FROM [dbo].[GameData][G]
-	JOIN [dbo].[UserData][U] ON [G].[UserDataId] = [U].[UserDataId]
-	WHERE [U].[Name] = @Name;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spInsertSingleGameDataById]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spInsertSingleGameDataById]
-	@Id int,
-	@HighScore int,
-	@LevelsCompleted int,
-	@TimePlayed float
-AS
-IF EXISTS ( SELECT UserDataId FROM UserData WHERE UserDataId = @Id )
-BEGIN
-	UPDATE GameData
-	SET UserDataId = @Id, HighScore = @HighScore, LevelsCompleted = @LevelsCompleted, TimePlayed = @TimePlayed
-	WHERE UserDataId = @Id;
-END
-GO
-PRINT N'Creating Procedure [dbo].[spInsertSingleGameDataByName]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spInsertSingleGameDataByName]
+ALTER PROCEDURE [dbo].[spInsertSingleGameDataByName]
 	@Name varchar(50),
 	@HighScore int,
 	@LevelsCompleted int,
@@ -253,51 +56,6 @@ BEGIN
 	SET HighScore = @HighScore, LevelsCompleted = @LevelsCompleted, TimePlayed = @TimePlayed
 	WHERE ( SELECT dbo.UserData.UserDataId FROM dbo.UserData WHERE dbo.UserData.Name = @Name ) = dbo.GameData.UserDataId;
 END
-GO
-PRINT N'Creating Procedure [dbo].[spInsertSingleUserData]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[spInsertSingleUserData]
-	@Name VARCHAR(50),
-	@Alias VARCHAR(50)
-AS
-IF NOT EXISTS ( SELECT * FROM UserData WHERE Name = @Name AND Alias = @Alias )
-BEGIN
-	INSERT INTO dbo.UserData ( Name, Alias)
-	VALUES ( @Name, @Alias );
-
-	INSERT INTO dbo.GameData ( UserDataId, HighScore, LevelsCompleted, TimePlayed )
-	VALUES ( (SELECT UserDataId FROM UserData WHERE Name = @Name AND Alias = @Alias ), NULL, NULL, NULL );
-END
-GO
--- Refactoring step to update target server with deployed transaction logs
-
-IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
-BEGIN
-    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
-    EXEC sp_addextendedproperty N'microsoft_database_tools_support', N'refactoring log', N'schema', N'dbo', N'table', N'__RefactorLog'
-END
-GO
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'c8ea3b11-b4bd-4ca4-af6b-4b9544d53d3f')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('c8ea3b11-b4bd-4ca4-af6b-4b9544d53d3f')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'ece8b107-f9ed-4b51-b62e-78f1c8bb773f')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('ece8b107-f9ed-4b51-b62e-78f1c8bb773f')
-
-GO
-
-GO
-PRINT N'Checking existing data against newly created constraints';
-
-
-GO
-USE [$(DatabaseName)];
-
-
-GO
-ALTER TABLE [dbo].[GameData] WITH CHECK CHECK CONSTRAINT [FK_GameData_UserData];
-
-
 GO
 PRINT N'Update complete.';
 

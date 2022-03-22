@@ -9,5 +9,7 @@
        None
 
 ** User actions
+     Alter
+       [dbo].[spGetSingleUserDataByName] (Procedure)
 
 ** Supporting actions

@@ -9,5 +9,7 @@
        None
 
 ** User actions
+     Create
+       [dbo].[spGetSingleUser] (Procedure)
 
 ** Supporting actions

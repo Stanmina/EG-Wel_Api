@@ -1,4 +1,4 @@
-﻿namespace TestApi;
+﻿/*namespace TestApi;
 
 public class InMemHighScoreService : IHighScoreService
 {
@@ -78,3 +78,4 @@ public class InMemHighScoreService : IHighScoreService
     public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.Id == id));
 
 }
+*/

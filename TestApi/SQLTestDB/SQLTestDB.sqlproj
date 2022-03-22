@@ -77,6 +77,8 @@
     <Build Include="dbo\Stored Procedures\spInsertSingleGameDataById.sql" />
     <Build Include="dbo\Stored Procedures\spInsertSingleGameDataByName.sql" />
     <Build Include="dbo\Stored Procedures\spGetAllByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSingleUser.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteSingleUserDataByName.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\PublishLocations\EG-Wel_Local.publish.xml" />
