@@ -10,7 +10,3 @@ C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\bin\Debug\SQLTestD
 C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.sqlproj.AssemblyReference.cache
 C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.dll
 C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\SQLTestDB.pdb
-C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\Model.xml
-C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\refactor.xml
-C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\postdeploy.sql
-C:\Users\EG-Wel\Documents\GitHub\EG-Wel_Api\TestApi\SQLTestDB\obj\Debug\predeploy.sql

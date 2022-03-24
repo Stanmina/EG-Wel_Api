@@ -1,6 +1,7 @@
 using TestApi;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Services;
+using TestApi.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/*builder.Services.AddSingleton<IHighScoreService, InMemHighScoreService>();
+builder.Services.AddSingleton<IHighScoreService, SQLiteHighScoreService>();*/
 builder.Services.AddSingleton<IHighScoreService, SQLHighScoreService>();
+builder.Services.AddSingleton<IItemService, InMemItemService>();
 
 var app = builder.Build();
 
@@ -80,12 +84,12 @@ app.MapPost("/HighScores", ([FromServices] IHighScoreService hsService, [FromBod
     hsService.AddSingleUserData(data);
     return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
 });
-
+/*
 app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService hsService, [FromBody] List<UserData> data) =>
 {
     hsService.AddMultipleUserData(data);
     return Results.Created($"/HighScores", data);
-});
+});*/
 #endregion
 
 #region Delete
@@ -96,5 +100,11 @@ app.MapDelete("HighScore/DeleteByName/{name}", ([FromServices] IHighScoreService
     hsService.DeleteSingleUserDataByName(name);
 });
 #endregion
+
+app.MapGet("/Item/GetItem", ([FromServices] IItemService itemService) => {
+    var result = itemService.GetItems();
+    return Results.Ok(result);
+});
+
 
 app.Run();

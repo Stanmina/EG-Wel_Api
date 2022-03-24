@@ -1,4 +1,6 @@
-﻿namespace TestApi;
+﻿using TestApi.Models;
+
+namespace TestApi;
 public interface IHighScoreService
 {
     public List<UserData> GetUserDatas();

@@ -18,8 +18,7 @@ public class SQLHighScoreService : IHighScoreService
 
     public void AddSingleUserData(UserData data)
     {
-        _database.InsertIntoUserData($"TestDB.dbo.spInsertSingleUserData '{data.Name}', '{data.Alias}';" +
-            $"TestDB.dbo.spInsertSingleGameData {data.UserDataId}, {data.GameData.HighScore}, {data.GameData.LevelsCompleted}, {data.GameData.TimePlayed}");
+        _database.InsertIntoUserData($"TestDB.dbo.spInsertSingleUserData '{data.Name}', '{data.Alias}';", $"TestDB.dbo.spInsertSingleGameData {data.UserDataId}, {data.GameData.HighScore}, {data.GameData.LevelsCompleted}, {data.GameData.TimePlayed}");
     }
 
     public void DeleteSingleUserDataByName(string name)
@@ -69,6 +68,6 @@ public class SQLHighScoreService : IHighScoreService
 
     public void UpdateSingleUserData(UserData data)
     {
-        throw new NotImplementedException();
+        _database.UpdataData("");
     }
 }
