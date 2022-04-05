@@ -1,4 +1,5 @@
 ﻿using TestApi.DataAccess;
+using TestApi.Models;
 
 namespace TestApi.Services;
 
@@ -63,11 +64,16 @@ public class SQLHighScoreService : IHighScoreService
 
     public List<UserData> GetUserDatas()
     {
-        return _database.GetUserData("TestDB.dbo.spGetAllUserData");
+        return _database.GetUserData("TestDB.dbo.spGetAllUserDataSortByTime");
     }
 
     public void UpdateSingleUserData(UserData data)
     {
         _database.UpdataData("");
+    }
+
+    public void UpdateTimePlayedByName(Time data)
+    {
+        _database.UpdataData($"TestDB.dbo.spInsertTimePlayedByName {data.name},{data.time};");
     }
 }

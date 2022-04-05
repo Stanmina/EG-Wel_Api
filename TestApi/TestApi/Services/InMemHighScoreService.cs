@@ -1,6 +1,6 @@
 ﻿namespace TestApi;
 
-public class InMemHighScoreService : IHighScoreService
+public class InMemHighScoreService/* : IHighScoreService*/
 {
     private List<UserData> userDatas;
 
@@ -80,6 +80,11 @@ public class InMemHighScoreService : IHighScoreService
     public void DeleteSingleUserDataById(int id) => userDatas.Remove(userDatas.Find((x) => x.UserDataId == id));
 
     public void DeleteSingleUserDataByName(string name)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateTimePlayedByName(string data)
     {
         throw new NotImplementedException();
     }

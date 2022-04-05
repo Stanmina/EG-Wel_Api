@@ -2,6 +2,7 @@ using TestApi;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Services;
 using TestApi.Interfaces;
+using TestApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +76,11 @@ app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] IHighScoreService 
 app.MapPut("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody] UserData data) =>
 {
     hsService.UpdateSingleUserData(data);
+});
+
+app.MapPut("/HighScores/UpdateTimePlayed", ([FromServices] IHighScoreService hsService, [FromBody] Time data) =>
+{
+    hsService.UpdateTimePlayedByName(data);
 });
 #endregion
 

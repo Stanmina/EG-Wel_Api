@@ -79,6 +79,8 @@
     <Build Include="dbo\Stored Procedures\spGetAllByName.sql" />
     <Build Include="dbo\Stored Procedures\spGetSingleUser.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteSingleUserDataByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllUserDataSortByTime.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertTimePlayedByName.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\PublishLocations\SQLTestDB.publish.xml" />

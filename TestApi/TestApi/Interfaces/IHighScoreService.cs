@@ -15,4 +15,5 @@ public interface IHighScoreService
     public void AddSingleUserData(UserData data);
     public void AddMultipleUserData(List<UserData> data); 
     public void DeleteSingleUserDataById(int id);
+    public void UpdateTimePlayedByName(Time data);
 }

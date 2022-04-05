@@ -1,6 +1,6 @@
 ﻿namespace TestApi;
 
-public class SQLiteHighScoreService : IHighScoreService
+public class SQLiteHighScoreService/* : IHighScoreService*/
 {
     private readonly SqliteDataAccess _database;
 
@@ -52,4 +52,9 @@ public class SQLiteHighScoreService : IHighScoreService
     public List<UserData> GetUserDatas() => _database.GetUserData("SELECT * FROM UserData");
 
     public void UpdateSingleUserData(UserData data) => _database.PutGameData(data);
+
+    public void UpdateTimePlayedByName(string name, float time)
+    {
+        throw new NotImplementedException();
+    }
 }
