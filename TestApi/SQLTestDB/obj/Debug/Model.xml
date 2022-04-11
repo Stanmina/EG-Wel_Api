@@ -1158,7 +1158,7 @@ BEGIN
 	VALUES ( @Name, @Alias );
 
 	INSERT INTO dbo.GameData ( UserDataId, HighScore, LevelsCompleted, TimePlayed )
-	VALUES ( (SELECT UserDataId FROM UserData WHERE Name = @Name AND Alias = @Alias ), NULL, NULL, NULL );
+	VALUES ( (SELECT UserDataId FROM UserData WHERE Name = @Name AND Alias = @Alias ), NULL, NULL, 60 );
 END]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1249,7 +1249,7 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="444" />
+				<Property Name="Length" Value="442" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[spInsertSingleUserData]&#xD;&#xA;&#x9;@Name VARCHAR(50),&#xD;&#xA;&#x9;@Alias VARCHAR(50)&#xD;&#xA;AS" />

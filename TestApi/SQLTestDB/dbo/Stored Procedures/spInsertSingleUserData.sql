@@ -8,5 +8,5 @@ BEGIN
 	VALUES ( @Name, @Alias );
 
 	INSERT INTO dbo.GameData ( UserDataId, HighScore, LevelsCompleted, TimePlayed )
-	VALUES ( (SELECT UserDataId FROM UserData WHERE Name = @Name AND Alias = @Alias ), NULL, NULL, NULL );
+	VALUES ( (SELECT UserDataId FROM UserData WHERE Name = @Name AND Alias = @Alias ), NULL, NULL, 60 );
 END
