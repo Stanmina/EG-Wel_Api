@@ -53,16 +53,14 @@ public class SqlDataAccess
         }
     }
 
-    public void InsertIntoUserData(string userData, string gameData)
+    public void InsertIntoUserData(string userData)
     {
         using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("TestDB")))
         {
             conn.Open();
             
             SqlCommand cmd = new(userData, conn);
-            SqlCommand cmd1 = new(gameData, conn);
             cmd.ExecuteNonQuery();
-            cmd1.ExecuteNonQuery();
 
             conn.Close();
         }

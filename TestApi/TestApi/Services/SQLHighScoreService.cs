@@ -17,9 +17,9 @@ public class SQLHighScoreService : IHighScoreService
         throw new NotImplementedException();
     }
 
-    public void AddSingleUserData(UserData data)
+    public void AddSingleUserData(User data)
     {
-        _database.InsertIntoUserData($"TestDB.dbo.spInsertSingleUserData '{data.Name}', '{data.Alias}';", $"TestDB.dbo.spInsertSingleGameData {data.UserDataId}, {data.GameData.HighScore}, {data.GameData.LevelsCompleted}, {data.GameData.TimePlayed}");
+        _database.InsertIntoUserData($"TestDB.dbo.spInsertSingleUserData '{data.Name}', '{data.Alias}';");
     }
 
     public void DeleteSingleUserDataByName(string name)

@@ -1,7 +1,6 @@
 using TestApi;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Services;
-using TestApi.Interfaces;
 using TestApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +13,6 @@ builder.Services.AddSwaggerGen();
 /*builder.Services.AddSingleton<IHighScoreService, InMemHighScoreService>();
 builder.Services.AddSingleton<IHighScoreService, SQLiteHighScoreService>();*/
 builder.Services.AddSingleton<IHighScoreService, SQLHighScoreService>();
-builder.Services.AddSingleton<IItemService, InMemItemService>();
 
 var app = builder.Build();
 
@@ -34,11 +32,11 @@ app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService hsSer
     return Results.Ok(result);
 });
 
-app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService hsService, [FromRoute] string name) =>
+/*app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService hsService, [FromRoute] string name) =>
 {
     var result = hsService.GetSingleUserData(name);
     return Results.Ok(result);
-});
+});*/
 #region
 /*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService hsService, [FromRoute] string alias) =>
 {
@@ -85,10 +83,9 @@ app.MapPut("/HighScores/UpdateTimePlayed", ([FromServices] IHighScoreService hsS
 #endregion
 
 #region Post
-app.MapPost("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody] UserData data) =>
+app.MapPut("/HighScores/AddNewUser", ([FromServices] IHighScoreService hsService, [FromBody] User data) =>
 {
     hsService.AddSingleUserData(data);
-    return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
 });
 /*
 app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService hsService, [FromBody] List<UserData> data) =>
@@ -106,11 +103,6 @@ app.MapDelete("HighScore/DeleteByName/{name}", ([FromServices] IHighScoreService
     hsService.DeleteSingleUserDataByName(name);
 });
 #endregion
-
-app.MapGet("/Item/GetItem", ([FromServices] IItemService itemService) => {
-    var result = itemService.GetItems();
-    return Results.Ok(result);
-});
 
 
 app.Run();
