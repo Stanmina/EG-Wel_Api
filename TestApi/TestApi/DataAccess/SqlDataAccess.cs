@@ -7,7 +7,6 @@ namespace TestApi.DataAccess;
 
 public class SqlDataAccess
 {
-    //public static string CnnVal(string name) => System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
     private readonly IConfiguration _config;
 
     public SqlDataAccess(IConfiguration config)

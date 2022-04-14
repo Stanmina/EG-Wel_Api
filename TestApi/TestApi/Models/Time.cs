@@ -3,5 +3,6 @@
 public class Time
 {
     public string name { get; set; }
-    public float time { get; set; }
+    public string alias { get; set; }
+    public double time { get; set; }
 }
