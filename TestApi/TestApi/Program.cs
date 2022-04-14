@@ -1,6 +1,8 @@
 using TestApi;
 using Microsoft.AspNetCore.Mvc;
 using TestApi.Services;
+using TestApi.Models;
+using TestApi.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+/*builder.Services.AddSingleton<IHighScoreService, InMemHighScoreService>();
+builder.Services.AddSingleton<IHighScoreService, SQLiteHighScoreService>();*/
 builder.Services.AddSingleton<IHighScoreService, SQLHighScoreService>();
+builder.Services.AddSingleton<IScoreService, SQLScoreService>();
 
 var app = builder.Build();
 
@@ -22,58 +27,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+#region TestDB
 #region Get
 app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService hsService) =>
 {
     var result = hsService.GetUserDatas();
     return Results.Ok(result);
 });
-
-app.MapGet("/HighScores/SearchByName/{name}", ([FromServices] IHighScoreService hsService, [FromRoute] string name) =>
-{
-    var result = hsService.GetSingleUserData(name);
-    return Results.Ok(result);
-});
-<<<<<<< Updated upstream
-=======
-
-app.MapGet("/test", ([FromServices] IHighScoreService inMemHigh) =>
-{
-    var result = inMemHigh.GetHighScoreList();
-    return Results.Ok(result);
-});
->>>>>>> Stashed changes
-#region
-/*app.MapGet("/HighScores/SearchByAlias/{alias}", ([FromServices] IHighScoreService hsService, [FromRoute] string alias) =>
-{
-    var result = hsService.GetSingleUserDataByAlias(alias);
-    return Results.Ok(result);
-});
-
-app.MapGet("/HighScores/SearchByScore/{highScore}", ([FromServices] IHighScoreService hsService, [FromRoute] int highScore) =>
-{
-    var result = hsService.GetHighscoreUserData(highScore);
-    return Results.Ok(result);
-});
-
-app.MapGet("/HighScores/SearchByLevelCompleted/{levelCompleted}", ([FromServices] hsService highScoreService, [FromRoute] int levelCompleted) =>
-{
-    var result = hsService.GetLevelCompletedUserData(levelCompleted);
-    return Results.Ok(result);
-});
-
-app.MapGet("/HighScores/GetHighScoreList/", ([FromServices] IHighScoreService hsService) =>
-{
-    var orderedList = hsService.GetHighScoreList();
-    return orderedList;
-});
-
-app.MapGet("/HighScores/GetAverageHighScore", ([FromServices] IHighScoreService hsService) =>
-{
-    var averageHighScore = hsService.GetAverageHighScore();
-    return Results.Ok(averageHighScore);
-});*/
-#endregion
 #endregion
 
 #region Put
@@ -81,19 +41,20 @@ app.MapPut("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody
 {
     hsService.UpdateSingleUserData(data);
 });
+
+app.MapPut("/HighScores/UpdateTimePlayed", ([FromServices] IHighScoreService hsService, [FromBody] Time data) =>
+{
+    hsService.UpdateTimePlayedByName(data);
+});
 #endregion
 
 #region Post
-app.MapPost("/HighScores", ([FromServices] IHighScoreService hsService, [FromBody] UserData data) =>
-{
-    hsService.AddSingleUserData(data);
-    return Results.Created($"/HighScores/SearchByName/{data.Name}", data);
-});
+app.MapPost("/HighScores/AddNewUser", (HttpContext ctx, IHighScoreService hsService) => {
+    // read value from Form collection
+    var name = ctx.Request.Form["name"];
+    var alias = ctx.Request.Form["alias"];
 
-app.MapPost("/HighScores/AddMultipleUserData", ([FromServices] IHighScoreService hsService, [FromBody] List<UserData> data) =>
-{
-    hsService.AddMultipleUserData(data);
-    return Results.Created($"/HighScores", data);
+    hsService.AddSingleUserData(new User() { Name = name, Alias = alias });
 });
 #endregion
 
@@ -105,5 +66,21 @@ app.MapDelete("HighScore/DeleteByName/{name}", ([FromServices] IHighScoreService
     hsService.DeleteSingleUserDataByName(name);
 });
 #endregion
+#endregion
 
+#region EG-Wel_Spel_DB
+
+app.MapGet("/Scores/GetByLevel/{levelName}", ([FromServices] IScoreService sService, [FromRoute] string levelName) => {
+    Console.WriteLine(levelName);
+    var result = sService.GetAllByLevel(levelName);
+    return Results.Ok(result);
+});
+
+app.MapGet("/Scores/GetAllUsers/{name}", ([FromServices] IScoreService sService, [FromRoute] string name) => {
+    Console.WriteLine(name);
+    var result = sService.GetAllByLevel(name);
+    return Results.Ok(result);
+});
+
+#endregion
 app.Run();
