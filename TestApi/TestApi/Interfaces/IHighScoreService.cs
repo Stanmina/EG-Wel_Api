@@ -1,4 +1,6 @@
-﻿namespace TestApi;
+﻿using TestApi.Models;
+
+namespace TestApi;
 public interface IHighScoreService
 {
     public List<UserData> GetUserDatas();
@@ -10,7 +12,8 @@ public interface IHighScoreService
     public double GetAverageHighScore();
     public void DeleteSingleUserDataByName(string name);
     public void UpdateSingleUserData(UserData data);
-    public void AddSingleUserData(UserData data);
+    public void AddSingleUserData(User data);
     public void AddMultipleUserData(List<UserData> data); 
     public void DeleteSingleUserDataById(int id);
+    public void UpdateTimePlayedByName(Time data);
 }
