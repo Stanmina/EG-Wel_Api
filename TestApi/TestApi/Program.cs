@@ -76,9 +76,8 @@ app.MapGet("/Scores/GetByLevel/{levelName}", ([FromServices] IScoreService sServ
     return Results.Ok(result);
 });
 
-app.MapGet("/Scores/GetAllUsers/{name}", ([FromServices] IScoreService sService, [FromRoute] string name) => {
-    Console.WriteLine(name);
-    var result = sService.GetAllByLevel(name);
+app.MapGet("/Scores/GetAllUsers", ([FromServices] IScoreService sService) => {
+    var result = sService.GetAllUsers();
     return Results.Ok(result);
 });
 

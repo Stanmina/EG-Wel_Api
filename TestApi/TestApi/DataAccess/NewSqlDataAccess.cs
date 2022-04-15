@@ -29,9 +29,33 @@ public class NewSqlDataAccess
             Console.WriteLine(reader);
 
             while (reader.Read())
-            {
                 data.Add(new Time() { name = reader.GetString(0), alias = reader.GetString(1), time = reader.GetDouble(2) });
-            }
+
+            reader.Close();
+            conn.Close();
+
+            return data;
+        }
+    }
+
+    public List<User> GetAllUsers(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
+        {
+            List<User> data = new();
+
+            Console.WriteLine(command);
+
+            conn.Open();
+
+            SqlCommand cmd = new(command, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Console.WriteLine(reader);
+
+            while (reader.Read())
+                data.Add(new User() { Name = reader.GetString(0), Alias = reader.GetString(1), Password = reader.GetString(3), Email = reader.GetString(2) });
 
             reader.Close();
             conn.Close();

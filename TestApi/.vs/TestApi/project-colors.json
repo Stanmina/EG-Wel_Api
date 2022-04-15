@@ -20,7 +20,12 @@
       "ProjectGuid": "001546ac-2675-4bbc-a17e-4101e393db66",
       "DisplayName": "Solution Items",
       "ColorIndex": 2
+    },
+    "79a926ec-ca9d-4146-a639-be9b3404aa81": {
+      "ProjectGuid": "79a926ec-ca9d-4146-a639-be9b3404aa81",
+      "DisplayName": "EG-Wél_Spel_DB",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }
