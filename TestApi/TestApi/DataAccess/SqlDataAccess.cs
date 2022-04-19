@@ -7,7 +7,6 @@ namespace TestApi.DataAccess;
 
 public class SqlDataAccess
 {
-    //public static string CnnVal(string name) => System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
     private readonly IConfiguration _config;
 
     public SqlDataAccess(IConfiguration config)
@@ -53,12 +52,25 @@ public class SqlDataAccess
         }
     }
 
-    public void InsertIntoUserData(string command)
+    public void InsertIntoUserData(string userData)
     {
         using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("TestDB")))
         {
             conn.Open();
             
+            SqlCommand cmd = new(userData, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+    }
+
+    internal void UpdataData(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("TestDB")))
+        {
+            conn.Open();
+
             SqlCommand cmd = new(command, conn);
             cmd.ExecuteNonQuery();
 

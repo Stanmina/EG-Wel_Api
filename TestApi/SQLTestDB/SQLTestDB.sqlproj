@@ -79,11 +79,18 @@
     <Build Include="dbo\Stored Procedures\spGetAllByName.sql" />
     <Build Include="dbo\Stored Procedures\spGetSingleUser.sql" />
     <Build Include="dbo\Stored Procedures\spDeleteSingleUserDataByName.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllUserDataSortByTime.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertTimePlayedByName.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\PublishLocations\SQLTestDB.publish.xml" />
+    <None Include="dbo\PublishLocations\EG-Wel_Local.publish.xml" />
+    <None Include="SQLTestDB.publish.xml" />
+    <None Include="dbo\PublishLocations\Pc_local.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="SQLTestDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\PostDeployScripts\Script.PostDeployUserDataPc.sql" />
   </ItemGroup>
 </Project>
