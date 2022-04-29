@@ -28,7 +28,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 #region TestDB
-#region Get
+/*#region Get
 app.MapGet("/HighScores/GetAllUserData", ([FromServices] IHighScoreService hsService) =>
 {
     var result = hsService.GetUserDatas();
@@ -66,6 +66,7 @@ app.MapDelete("HighScore/DeleteByName/{name}", ([FromServices] IHighScoreService
     hsService.DeleteSingleUserDataByName(name);
 });
 #endregion
+*/
 #endregion
 
 #region EG-Wel_Spel_DB
@@ -79,6 +80,33 @@ app.MapGet("/Scores/GetByLevel/{levelName}", ([FromServices] IScoreService sServ
 app.MapGet("/Scores/GetAllUsers", ([FromServices] IScoreService sService) => {
     var result = sService.GetAllUsers();
     return Results.Ok(result);
+});
+
+app.MapGet("/Scores/spGetAllLevelsByUser{name}", ([FromServices] IScoreService sService, [FromRoute] string name) => {
+    var result = sService.GetAllLevelsByUser(name);
+    return Results.Ok(result);
+});
+
+app.MapPost("/Scores/InsertNewUser", (HttpContext ctx, IScoreService sService) => {
+    var name = ctx.Request.Form["name"];
+    var alias = ctx.Request.Form["alias"];
+    var email = ctx.Request.Form["email"];
+    var password = ctx.Request.Form["password"];
+
+    sService.InsertNewUser(new User() { Name = name, Alias = alias, Email = email, Password = password });
+});
+
+app.MapPut("/Scores/PutTimeByLevel", ([FromServices] IScoreService sService, [FromBody] UpdateTime data) => {
+    sService.PutTime(data);
+});
+
+app.MapPost("/Scores/InsertNewTimeByLevel", (HttpContext ctx, IScoreService sService) => {
+    var name = ctx.Request.Form["name"];
+    var level = ctx.Request.Form["level"];
+    var time = double.Parse(ctx.Request.Form["time"]);
+    Console.WriteLine(name + " " + level + " " + time.ToString());
+
+    sService.InsertNewTime(new UpdateTime() { name = name, level = level, time = time });
 });
 
 #endregion

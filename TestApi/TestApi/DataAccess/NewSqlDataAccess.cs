@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using TestApi.Interfaces;
 using TestApi.Models;
 
 namespace TestApi.NewDataAccess;
@@ -55,7 +56,59 @@ public class NewSqlDataAccess
             Console.WriteLine(reader);
 
             while (reader.Read())
-                data.Add(new User() { Name = reader.GetString(0), Alias = reader.GetString(1), Password = reader.GetString(3), Email = reader.GetString(2) });
+                data.Add(new User() { Name = reader.GetString(0), Alias = reader.GetString(1), Password = reader.GetString(2), Email = reader.GetString(3) });
+
+            reader.Close();
+            conn.Close();
+
+            return data;
+        }
+    }
+
+    public void Insert(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
+        {
+            conn.Open();
+
+            SqlCommand cmd = new(command, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+    }
+
+    public void PutTime(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
+        {
+            conn.Open();
+
+            SqlCommand cmd = new(command, conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+    }
+
+    public List<Level> GetAllLevelsByUser(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
+        {
+            List<Level> data = new();
+
+            Console.WriteLine(command);
+
+            conn.Open();
+
+            SqlCommand cmd = new(command, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Console.WriteLine(reader);
+
+            while (reader.Read())
+                data.Add(new Level() { Name = reader.GetString(0), Time = reader.GetDouble(1) });
 
             reader.Close();
             conn.Close();
