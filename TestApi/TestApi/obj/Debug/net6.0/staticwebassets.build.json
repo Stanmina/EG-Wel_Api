@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "CMw3SBkQYLQQQgU68fxvFZRsM9vbF1TV2hjP565+/0Y=",
-  "Source": "TestApi",
-  "BasePath": "_content/TestApi",
+  "Hash": "JhDJBJiu/X6F15HHCk1DNwCcv5vtH1jla0JsD539gvQ=",
+  "Source": "GameApi",
+  "BasePath": "_content/GameApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

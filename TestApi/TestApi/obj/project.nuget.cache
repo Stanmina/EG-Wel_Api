@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UlzCNZrAh05hPYGIQFCAp0q+MjpF/IAYtA14gs5zbt485KHMTbW7ATs9kbMKpuE5EvSZVJYit9Nk83aF4SvrPw==",
+  "dgSpecHash": "c914HvF0BNHyp/sRjEOLaYhdUFg7PdZXnAoLV1z9fAPPIojPD/JN67DWuZwtxMKS3x3rTc0qKQfkpnbD8lmLwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj",
+  "projectFilePath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\GameApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EG-Wel\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\EG-Wel\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

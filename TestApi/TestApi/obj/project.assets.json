@@ -1497,9 +1497,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj",
-      "projectName": "TestApi",
-      "projectPath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\TestApi.csproj",
+      "projectUniqueName": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\GameApi.csproj",
+      "projectName": "GameApi",
+      "projectPath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\GameApi.csproj",
       "packagesPath": "C:\\Users\\EG-Wel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\EG-Wel\\Documents\\GitHub\\EG-Wel_Api\\TestApi\\TestApi\\obj\\",
       "projectStyle": "PackageReference",

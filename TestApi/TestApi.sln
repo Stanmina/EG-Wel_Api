@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApi", "TestApi\TestApi.csproj", "{8AAF3A90-FF9F-4E07-8757-E42B57930B45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameApi", "TestApi\GameApi.csproj", "{8AAF3A90-FF9F-4E07-8757-E42B57930B45}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLTestDB", "SQLTestDB\SQLTestDB.sqlproj", "{AA1ED0C0-B415-4EA1-845B-A45794CA3D3B}"
 EndProject
