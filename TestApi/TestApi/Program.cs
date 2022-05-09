@@ -97,16 +97,12 @@ app.MapPost("/Scores/InsertNewUser", (HttpContext ctx, IScoreService sService) =
 });
 
 app.MapPut("/Scores/PutTimeByLevel", ([FromServices] IScoreService sService, [FromBody] UpdateTime data) => {
+    Console.WriteLine(data.time);
     sService.PutTime(data);
 });
 
 app.MapPost("/Scores/InsertNewTimeByLevel", (HttpContext ctx, IScoreService sService) => {
-    var name = ctx.Request.Form["name"];
-    var level = ctx.Request.Form["level"];
-    var time = double.Parse(ctx.Request.Form["time"]);
-    Console.WriteLine(name + " " + level + " " + time.ToString());
-
-    sService.InsertNewTime(new UpdateTime() { name = name, level = level, time = time });
+    sService.InsertNewTime(ctx.Request.Form["name"], ctx.Request.Form["level"], ctx.Request.Form["time"]);
 });
 
 #endregion

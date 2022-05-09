@@ -71,6 +71,7 @@ public class NewSqlDataAccess
         {
             conn.Open();
 
+            Console.WriteLine(command);
             SqlCommand cmd = new(command, conn);
             cmd.ExecuteNonQuery();
 
@@ -83,6 +84,7 @@ public class NewSqlDataAccess
         using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
         {
             conn.Open();
+            Console.WriteLine(command);
 
             SqlCommand cmd = new(command, conn);
             cmd.ExecuteNonQuery();

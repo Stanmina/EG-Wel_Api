@@ -8,6 +8,6 @@ public interface IScoreService
     public List<User> GetAllUsers();
     public void InsertNewUser(User user);
     public void PutTime(UpdateTime data);
-    public void InsertNewTime(UpdateTime data);
+    public void InsertNewTime(string name, string level, string time);
     public List<Level> GetAllLevelsByUser(string name);
 }
