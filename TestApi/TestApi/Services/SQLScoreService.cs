@@ -22,4 +22,16 @@ public class SQLScoreService : IScoreService
     public void InsertNewTime(string name, string level, string time) => _database.Insert($"[EG-Wel_Spel_DB].[dbo].[spInsertNewTime] '{name}', '{level}', {time}");
 
     public List<Level> GetAllLevelsByUser(string name) => _database.GetAllLevelsByUser($"[EG-Wel_Spel_DB].[dbo].[spGetAllLevelsByUser] '{name}'");
+
+    bool IScoreService.GetUser(string name, string password)
+    {
+        Console.WriteLine($"[EG-Wel_Spel_DB].[dbo].[spGetUserByName] '{name}'");
+        User data = _database.GetUser($"[EG-Wel_Spel_DB].[dbo].[spGetUserByName] '{name}'");
+
+        if (data.Password == password)
+            return true;
+        else
+            return false;
+        
+    }
 }

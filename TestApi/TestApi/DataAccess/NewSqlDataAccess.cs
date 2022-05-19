@@ -118,4 +118,34 @@ public class NewSqlDataAccess
             return data;
         }
     }
+
+    public User GetUser(string command)
+    {
+        using (SqlConnection conn = new SqlConnection(_config.GetConnectionString("EG-Wel")))
+        {
+            List<User> data = new();
+            User date = new();
+
+            Console.WriteLine(command);
+
+            conn.Open();
+
+            SqlCommand cmd = new(command, conn);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Console.WriteLine(reader);
+
+            while (reader.Read())
+                data.Add(new User() { Name = reader.GetString(1), Alias = reader.GetString(2), Password = reader.GetString(3), Email = reader.GetString(4) });
+
+            reader.Close();
+            conn.Close();
+
+            if (data.Count == 0)
+                return new User() { Name = null, Alias = null, Password = null, Email = null };
+
+            return data.First();
+        }
+    }
 }

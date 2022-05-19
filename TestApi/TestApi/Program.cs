@@ -82,8 +82,14 @@ app.MapGet("/Scores/GetAllUsers", ([FromServices] IScoreService sService) => {
     return Results.Ok(result);
 });
 
-app.MapGet("/Scores/spGetAllLevelsByUser{name}", ([FromServices] IScoreService sService, [FromRoute] string name) => {
+app.MapGet("/Scores/GetAllLevelsByUser{name}", ([FromServices] IScoreService sService, [FromRoute] string name) => {
     var result = sService.GetAllLevelsByUser(name);
+    return Results.Ok(result);
+});
+
+
+app.MapGet("/Scores/GetUser{name}/{password}", ([FromServices] IScoreService sService, [FromRoute] string name, string password) => {
+    var result = sService.GetUser(name, password);
     return Results.Ok(result);
 });
 

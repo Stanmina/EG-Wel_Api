@@ -10,4 +10,5 @@ public interface IScoreService
     public void PutTime(UpdateTime data);
     public void InsertNewTime(string name, string level, string time);
     public List<Level> GetAllLevelsByUser(string name);
+    public bool GetUser(string name, string password);
 }
